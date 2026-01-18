@@ -1,7 +1,7 @@
 [project]
-name = "prompalchemy"
+name = "PromptWizard"
 version = "0.1.0"
-description = "Add your description here"
+description = "Prompt Assistant for Image Generation Tasks"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
