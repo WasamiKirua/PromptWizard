@@ -114,6 +114,7 @@ async def load_api_key(provider: str) -> Dict[str, str]:
             continue
         env_key, value = stripped.split("=", 1)
         if env_key.strip() == key_name:
+            print(f"[prompt-alchemy] selected key {key_name} {value.strip()}")
             return {"api_key": value.strip()}
     return {"api_key": ""}
 

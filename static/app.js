@@ -36,21 +36,32 @@
     return '*'.repeat(length);
   };
 
+  const storeKey = (provider, key) => {
+    if (!key) return;
+    keyCache[provider] = key;
+    localStorage.setItem(getStorageKey(provider), key);
+  };
+
   const applyMaskedKey = (provider, key) => {
     if (!key) return;
     keyCache[provider] = key;
+    if (providerInput.value !== provider) {
+      return;
+    }
     apiKeyInput.value = key;
     apiKeyVisible.value = maskKey(key);
     apiKeyVisible.dataset.masked = 'true';
   };
 
-  const hydrateFromEnv = (provider) => {
+  const hydrateFromEnv = (provider, applyIfEmpty) => {
     fetch(`/api/keys?provider=${encodeURIComponent(provider)}`)
       .then((res) => res.json())
       .then((data) => {
         if (!data || !data.api_key) return;
-        applyMaskedKey(provider, data.api_key);
-        localStorage.setItem(getStorageKey(provider), data.api_key);
+        if (applyIfEmpty) {
+          storeKey(provider, data.api_key);
+          applyMaskedKey(provider, data.api_key);
+        }
       })
       .catch(() => {});
   };
@@ -60,13 +71,13 @@
     localStorage.setItem(STORAGE_PROVIDER, provider);
     const storedKey = localStorage.getItem(getStorageKey(provider)) || '';
     apiKeyVisible.placeholder = `Paste ${providerLabels[provider]} API Key`;
+    hydrateFromEnv(provider, !storedKey);
     if (storedKey) {
       applyMaskedKey(provider, storedKey);
     } else {
       apiKeyVisible.value = '';
       apiKeyInput.value = '';
       apiKeyVisible.dataset.masked = 'false';
-      hydrateFromEnv(provider);
     }
   };
 
@@ -85,12 +96,21 @@
 
   ensureFreshLocalStorage();
 
+  const setProvider = (provider) => {
+    if (!provider || !providerLabels[provider]) return;
+    providerSelect.value = provider;
+    syncProvider(provider);
+  };
+
   const initialProvider = localStorage.getItem(STORAGE_PROVIDER) || 'gemini';
-  providerSelect.value = initialProvider;
-  syncProvider(initialProvider);
+  setProvider(initialProvider);
 
   providerSelect.addEventListener('change', (event) => {
-    syncProvider(event.target.value);
+    setProvider(event.target.value);
+  });
+
+  providerSelect.addEventListener('input', (event) => {
+    setProvider(event.target.value);
   });
 
   apiKeyVisible.addEventListener('focus', () => {
@@ -119,7 +139,7 @@
     }
     keyCache[provider] = key;
     apiKeyInput.value = key;
-    localStorage.setItem(getStorageKey(provider), key);
+    storeKey(provider, key);
     scheduleKeySync(provider, key);
   });
 
