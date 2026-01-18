@@ -1,0 +1,19 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Env Vars
+.env
+
+# Prompt
+Prompt Alchemy V1.1/
+
+# Macos
+.DS_Store

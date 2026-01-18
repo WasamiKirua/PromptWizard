@@ -1,0 +1,35 @@
+<div class="animate-fade-in">
+  <h3 class="text-xs uppercase tracking-wider text-gray-500 font-bold mb-3">Specific Checkpoint</h3>
+  <div class="grid grid-cols-1 gap-2">
+    {% for ckpt in family.checkpoints %}
+    <label
+      class="flex items-center gap-3 p-2.5 rounded-lg border cursor-pointer transition-colors {% if ckpt.id == selected_checkpoint.id %}bg-primary-900/20 border-primary-500/40 ring-1 ring-primary-500/20{% else %}bg-gray-800/30 border-gray-700/50 hover:bg-gray-800/50{% endif %}"
+    >
+      <input
+        type="radio"
+        name="checkpoint_id"
+        value="{{ ckpt.id }}"
+        {% if ckpt.id == selected_checkpoint.id %}checked{% endif %}
+        class="w-3.5 h-3.5 text-primary-500 bg-gray-800 border-gray-600 focus:ring-primary-500 focus:ring-offset-gray-900"
+      />
+      <div class="flex flex-col min-w-0">
+        <span class="text-sm text-gray-200 font-medium leading-tight">{{ ckpt.label }}</span>
+        <span class="text-[10px] text-gray-500 font-mono mt-0.5 truncate opacity-70">{{ ckpt.path }}</span>
+      </div>
+    </label>
+    {% endfor %}
+  </div>
+  {% if family.notes %}
+  <div class="mt-2 px-3 py-2 rounded-lg bg-blue-900/10 border border-blue-800/30 text-[10px] text-blue-200/70 flex gap-2 items-start leading-relaxed">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3 h-3 mt-0.5 shrink-0 text-blue-400">
+      <path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0ZM8.402 5.602a1.002 1.002 0 0 1 1.764 0l.703 2.108 2.109.702a1.002 1.002 0 0 1 0 1.765l-2.109.702-.702 2.109a1.002 1.002 0 0 1-1.764 0l-.703-2.109-2.109-.702a1.002 1.002 0 0 1 0-1.765l2.109-.702.703-2.108Z" clip-rule="evenodd" />
+    </svg>
+    <span>{{ family.notes }}</span>
+  </div>
+  {% endif %}
+</div>
+{% if include_oob %}
+<span id="loader-node" hx-swap-oob="true" class="text-[10px] normal-case text-gray-400 bg-gray-800/50 px-2 py-0.5 rounded border border-gray-700/50">
+  {{ family.loader_node }}
+</span>
+{% endif %}

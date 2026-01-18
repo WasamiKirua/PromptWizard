@@ -1,0 +1,71 @@
+@keyframes pulseSlow {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 6s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+#result-indicator {
+  display: none;
+}
+
+.htmx-request #result-indicator {
+  display: flex;
+}
+
+.focus-pill.active {
+  background-color: rgba(14, 165, 233, 0.2);
+  border-color: rgba(14, 165, 233, 0.5);
+  color: rgb(186, 230, 253);
+}
+
+.family-button.active {
+  background-color: rgba(14, 165, 233, 0.3);
+  border-color: rgb(14, 165, 233);
+  color: rgb(224, 242, 254);
+  box-shadow: 0 0 15px rgba(14, 165, 233, 0.15);
+}
+
+#generate-button:disabled {
+  background: rgba(31, 41, 55, 0.5);
+  border-color: rgba(55, 65, 81, 0.5);
+  color: rgb(107, 114, 128);
+  box-shadow: none;
+  transform: none;
+}
