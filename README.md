@@ -1,3 +1,5 @@
+![PromptWizard UI preview](preview.png)
+
 # PromptWizard (FastAPI + HTMX)
 
 PromptWizard is a local, browser-based prompt engineering tool that analyzes reference images and generates high-quality prompts for image/video diffusion models. It ports the original React UI into a FastAPI + HTMX + Tailwind workflow while keeping the same smooth, single-page experience.
