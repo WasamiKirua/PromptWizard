@@ -4,11 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PromptWizard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&family=Mochiy+Pop+One&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/htmx.org@1.9.10"></script>
   <link rel="stylesheet" href="/static/styles.css" />
 </head>
-<body class="bg-[#0b0f19] text-gray-100 font-sans selection:bg-primary-500/30 relative overflow-x-hidden" data-app-instance="{{ app_instance_id }}">
+<body class="candy-theme bg-[#0b0f19] text-gray-100 font-sans selection:bg-primary-500/30 relative overflow-x-hidden" data-app-instance="{{ app_instance_id }}">
   <div class="min-h-screen bg-[#0b0f19] text-gray-100 font-sans selection:bg-primary-500/30 relative overflow-x-hidden">
     <div class="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
       <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-900/20 rounded-full blur-[120px] animate-pulse-slow"></div>
@@ -30,7 +33,7 @@
                 </div>
               </div>
               <div class="flex flex-col">
-                <span class="text-xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 hidden sm:block leading-none">
+                <span class="candy-title text-xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#FF8CCF] to-[#8BD3FF] hidden sm:block leading-none">
                   PromptWizard
                 </span>
                 <span class="text-[10px] text-gray-500 font-mono hidden sm:block group-hover:text-primary-400 transition-colors">
@@ -93,7 +96,7 @@
         <div class="xl:col-span-3 flex flex-col gap-6">
           <div class="bg-gray-900/40 backdrop-blur-xl border border-gray-800/50 rounded-2xl p-6 shadow-2xl">
             <div class="flex items-center gap-3 mb-5 border-b border-gray-800/50 pb-4">
-              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 text-sm font-bold text-gray-300 border border-gray-700/50 shadow-inner">1</div>
+              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-[#FFE7F3] to-[#FFD6E8] text-sm font-bold text-rose-600 border border-rose-200/80 shadow-inner">1</div>
               <div>
                 <h2 class="text-lg font-bold text-gray-100">Visuals</h2>
                 <p class="text-xs text-gray-500">Upload references</p>
@@ -128,14 +131,14 @@
             </div>
           </div>
 
-          <div class="p-5 bg-gradient-to-br from-blue-900/20 to-indigo-900/20 border border-blue-500/20 rounded-2xl backdrop-blur-md">
+          <div class="p-5 bg-gradient-to-br from-[#FFD6E8] to-[#FFF0F7] border border-rose-200/70 rounded-2xl backdrop-blur-md shadow-[0_12px_30px_rgba(255,140,207,0.15)]">
             <div class="flex items-center gap-2 mb-2">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-blue-400">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 text-rose-400">
                 <path d="M12 2c5.523 0 10 4.477 10 10a10 10 0 0 1-10 10c-5.466 0-9.914-4.38-9.995-9.82C2.003 6.903 6.136 2.518 11.5 2.016V2h.5zm.75 5.75h-1.5v7h1.5v-7zm0-2.5h-1.5v1.5h1.5V5.25z" />
               </svg>
-              <h4 class="text-blue-300 text-xs font-bold uppercase tracking-wider">Influencer Tip</h4>
+              <h4 class="text-rose-500 text-xs font-bold uppercase tracking-wider">Influencer Tip</h4>
             </div>
-            <p class="text-blue-100/70 text-xs leading-relaxed">
+            <p class="text-rose-600/80 text-xs leading-relaxed">
               Consistency is key. Upload 3-5 images of your character in different poses but the same outfit for the best results.
             </p>
           </div>
@@ -146,7 +149,7 @@
             <div class="absolute inset-0 border border-primary-500/0 group-hover:border-primary-500/10 rounded-2xl transition-colors pointer-events-none"></div>
 
             <div class="flex items-center gap-3 mb-5 border-b border-gray-800/50 pb-4">
-              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 text-sm font-bold text-gray-300 border border-gray-700/50 shadow-inner">2</div>
+              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-[#FFE7F3] to-[#FFD6E8] text-sm font-bold text-rose-600 border border-rose-200/80 shadow-inner">2</div>
               <div>
                 <h2 class="text-lg font-bold text-gray-100">Alchemy Lab</h2>
                 <p class="text-xs text-gray-500">Configure parameters</p>
@@ -306,7 +309,7 @@
         <div class="xl:col-span-4 sticky top-24">
           <div class="bg-gray-900/40 backdrop-blur-xl border border-gray-800/50 rounded-2xl p-6 shadow-2xl min-h-[500px] flex flex-col">
             <div class="flex items-center gap-3 mb-5 border-b border-gray-800/50 pb-4">
-              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-gray-800 to-gray-900 text-sm font-bold text-gray-300 border border-gray-700/50 shadow-inner">3</div>
+              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-br from-[#FFE7F3] to-[#FFD6E8] text-sm font-bold text-rose-600 border border-rose-200/80 shadow-inner">3</div>
               <div>
                 <h2 class="text-lg font-bold text-gray-100">Transmutation</h2>
                 <p class="text-xs text-gray-500">Generated output</p>

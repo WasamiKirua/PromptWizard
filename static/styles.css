@@ -29,6 +29,120 @@
   }
 }
 
+:root {
+  --candy-bg: #fff6fb;
+  --candy-surface: #ffe7f3;
+  --candy-surface-2: #fff0f7;
+  --candy-surface-3: #ffd6e8;
+  --candy-border: #f3b6d5;
+  --candy-border-strong: #e69ec6;
+  --candy-text: #4a2b3a;
+  --candy-text-muted: #8a6b7a;
+  --candy-text-soft: #b093a2;
+}
+
+.candy-theme {
+  background-color: var(--candy-bg);
+  color: var(--candy-text);
+  font-family: "M PLUS Rounded 1c", "Nunito", "Arial Rounded MT Bold", "Trebuchet MS", sans-serif;
+}
+
+.candy-theme ::selection {
+  background: #ffd6e8;
+}
+
+.candy-theme .bg-\[\#0b0f19\] {
+  background-color: var(--candy-bg) !important;
+}
+
+.candy-theme [class*="bg-gray-900"] {
+  background-color: var(--candy-surface) !important;
+}
+
+.candy-theme [class*="bg-gray-800"] {
+  background-color: var(--candy-surface-2) !important;
+}
+
+.candy-theme [class*="bg-gray-950"] {
+  background-color: var(--candy-surface-3) !important;
+}
+
+.candy-theme [class*="border-gray-900"],
+.candy-theme [class*="border-gray-800"] {
+  border-color: var(--candy-border) !important;
+}
+
+.candy-theme [class*="border-gray-700"] {
+  border-color: var(--candy-border-strong) !important;
+}
+
+.candy-theme [class*="text-gray-100"],
+.candy-theme [class*="text-gray-200"],
+.candy-theme [class*="text-gray-300"] {
+  color: var(--candy-text) !important;
+}
+
+.candy-theme [class*="text-gray-400"],
+.candy-theme [class*="text-gray-500"] {
+  color: var(--candy-text-muted) !important;
+}
+
+.candy-theme [class*="text-gray-600"] {
+  color: var(--candy-text-soft) !important;
+}
+
+.candy-theme .text-white {
+  color: var(--candy-text) !important;
+}
+
+.candy-theme .bg-primary-900\/20,
+.candy-theme .bg-purple-900\/20,
+.candy-theme .bg-indigo-900\/10 {
+  background-color: #ffb5da !important;
+}
+
+.candy-theme .shadow-primary-500\/10,
+.candy-theme .shadow-primary-500\/20,
+.candy-theme .shadow-primary-500\/40 {
+  box-shadow: 0 18px 45px rgba(255, 140, 207, 0.25) !important;
+}
+
+.candy-theme [class*="text-primary"] {
+  color: #ff8ccf !important;
+}
+
+.candy-theme [class*="from-primary"] {
+  --tw-gradient-from: #ff8ccf !important;
+  --tw-gradient-to: rgba(255, 140, 207, 0) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+
+.candy-theme [class*="via-indigo"] {
+  --tw-gradient-stops: var(--tw-gradient-from), #8bd3ff, var(--tw-gradient-to) !important;
+}
+
+.candy-theme [class*="to-purple"] {
+  --tw-gradient-to: #ffd6a5 !important;
+}
+
+.candy-theme .candy-title {
+  font-family: "Mochiy Pop One", "M PLUS Rounded 1c", "Nunito", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.candy-theme .family-button.active {
+  background: linear-gradient(135deg, #ffd6e8 0%, #ffe7f3 55%, #e8f5ff 100%) !important;
+  border-color: #ff8ccf !important;
+  color: #c43e7d !important;
+  box-shadow: 0 10px 24px rgba(255, 140, 207, 0.25) !important;
+}
+
+.candy-theme .focus-pill.active {
+  background: linear-gradient(135deg, #ffd6e8 0%, #ffe7f3 60%, #e8f5ff 100%) !important;
+  border-color: #ff8ccf !important;
+  color: #c43e7d !important;
+}
+
 .animate-pulse-slow {
   animation: pulseSlow 6s ease-in-out infinite;
 }
