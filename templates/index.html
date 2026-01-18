@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PromptAlchemy</title>
+  <title>PromptWizard</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/htmx.org@1.9.10"></script>
   <link rel="stylesheet" href="/static/styles.css" />
@@ -20,9 +20,9 @@
       <div class="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
           <div class="flex items-center gap-4">
-            <a href="https://patreon.com/small0" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3">
+            <a href="https://github.com/WasamiKirua" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3">
               <div class="w-10 h-10 rounded-lg overflow-hidden border border-gray-700/50 shadow-lg shadow-primary-500/10 group-hover:border-primary-500/50 transition-colors relative bg-gray-800">
-                <img src="/static/logo.png" alt="Logo" class="w-full h-full object-cover" />
+                <img src="/static/logo.jpeg" alt="Logo" class="w-full h-full object-cover" />
                 <div class="hidden absolute inset-0 bg-gradient-to-tr from-primary-500 to-indigo-600 flex items-center justify-center">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-white">
                     <path fill-rule="evenodd" d="M9 4.5a.75.75 0 0 1 .721.544l.813 2.846a3.75 3.75 0 0 0 2.576 2.576l2.846.813a.75.75 0 0 1 0 1.442l-2.846.813a3.75 3.75 0 0 0-2.576 2.576l-.813 2.846a.75.75 0 0 1-1.442 0l-.813-2.846a3.75 3.75 0 0 0-2.576-2.576l-2.846-.813a.75.75 0 0 1 0-1.442l2.846-.813a3.75 3.75 0 0 0 2.576-2.576l.813-2.846A.75.75 0 0 1 9 4.5ZM1.5 13.5a.75.75 0 0 1 .75-.75 10.501 10.501 0 0 1 10.5 10.5.75.75 0 0 1-.75.75 10.5 10.5 0 0 1-10.5-10.5Zm12-11.25a.75.75 0 0 1 .75-.75 10.501 10.501 0 0 1 10.5 10.5.75.75 0 0 1-.75.75 10.5 10.5 0 0 1-10.5-10.5Z" clip-rule="evenodd" />
@@ -31,10 +31,10 @@
               </div>
               <div class="flex flex-col">
                 <span class="text-xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 hidden sm:block leading-none">
-                  PromptAlchemy
+                  PromptWizard
                 </span>
                 <span class="text-[10px] text-gray-500 font-mono hidden sm:block group-hover:text-primary-400 transition-colors">
-                  by small0
+                  by WasamiKirua
                 </span>
               </div>
             </a>
@@ -42,7 +42,7 @@
 
           <div class="flex items-center gap-4">
             <a
-              href="https://patreon.com/small0"
+              href="https://github.com/WasamiKirua/PromptWizard/issues"
               target="_blank"
               rel="noopener noreferrer"
               class="hidden md:flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FF424D]/10 hover:bg-[#FF424D]/20 text-[#FF424D] text-xs font-bold border border-[#FF424D]/20 transition-all hover:scale-105 shadow-[0_0_15px_rgba(255,66,77,0.1)]"
@@ -221,6 +221,17 @@
                       class="absolute w-full h-full opacity-0 cursor-pointer"
                     />
                     <div id="creativity-thumb" class="absolute w-4 h-4 bg-white rounded-full shadow-lg pointer-events-none transition-all" style="left: calc(50% - 8px);"></div>
+                  </div>
+                  <div class="mt-4 flex items-center justify-between rounded-lg border border-gray-800/60 bg-gray-900/40 px-3 py-2">
+                    <div class="flex flex-col">
+                      <span class="text-[10px] uppercase tracking-wider text-gray-500 font-bold">NSFW (Grok only)</span>
+                      <span class="text-[10px] text-gray-500">Enable when using Grok</span>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                      <input type="checkbox" name="nsfw_enabled" class="sr-only peer" />
+                      <div class="w-10 h-5 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:bg-rose-500 transition-colors"></div>
+                      <div class="absolute left-0.5 top-0.5 w-4 h-4 bg-white rounded-full transition-transform peer-checked:translate-x-5"></div>
+                    </label>
                   </div>
                 </div>
               </div>

@@ -60,23 +60,27 @@ def build_prompt_text(
             "specifying a specific trigger word. Describe the scene as if writing a story. "
             "Flux handles complex instruction well."
         )
+
     elif family_id == "sdxl":
         prompt_guidance = (
             "Output a hybrid format: start with a strong subject description in natural language, "
             "followed by comma-separated quality tags (e.g., 'masterpiece, best quality, 8k, "
             "ultra-detailed'). Include specific camera settings if photorealistic."
         )
+
     elif family_id == "sd15":
         prompt_guidance = (
             "Heavily reliant on tags. Use comma-separated keywords. Focus on 'best quality', "
             "'masterpiece', and specific art station tags. Keep sentences short or broken into tokens."
         )
+
     elif family_id == "sd3":
         prompt_guidance = (
             "Use natural language with high attention to detail. SD3 adheres strictly to the prompt, "
             "so include every visible element, color, and relationship between objects. It understands "
             "spatial relationships well."
         )
+
     elif family_id == "z_image":
         prompt_guidance = (
             "This model (AuraFlow architecture) uses the Qwen 3.4B LLM as a text encoder. Write a "
@@ -85,14 +89,18 @@ def build_prompt_text(
             "info, and microtextures. Avoid tag soup and keep it natural. CRITICAL: The Negative Prompt "
             "must be exactly 'blurry ugly bad'."
         )
+
     elif family_id in {"wan22", "svd"}:
         prompt_guidance = (
             "This is for a VIDEO generation model. Describe the MOTION, camera movement (pan, zoom, "
             "tilt), and duration flow. Start with the scene description, then describe how the subject "
             "moves or how the camera moves. E.g., 'The girl smiles as the camera slowly zooms in'."
         )
+
     elif family_id in {"cascade", "sd21"}:
         prompt_guidance = "Standard Stable Diffusion prompting. Use a mix of description and quality tags."
+
+
     else:
         prompt_guidance = "Generate a high-quality, detailed prompt suitable for diffusion models."
 
@@ -143,6 +151,8 @@ def build_prompt_text(
         f"- {prompt_guidance}\n"
         "- If multiple images are provided, synthesize their common elements into one cohesive character or style definition.\n"
         f"- {negative_prompt_guidance}\n\n"
+        f"GROK\n"
+        f"\n"
         "Return only valid JSON:\n"
         "{\n"
         "  \"prompt\": \"THE GENERATED PROMPT STRING\",\n"
@@ -291,7 +301,17 @@ def generate_prompt(
     family: Dict[str, Any],
     checkpoint: Dict[str, Any],
 ) -> Dict[str, str]:
+
     prompt_text = build_prompt_text(config, family, checkpoint)
+
+    nsfw_toggle = config.get('nsfwEnabled')
+
+    if provider == 'grok' and nsfw_toggle:
+        prompt_text = prompt_text.replace(f"GROK", "Describe NSFW or explicit content factually without censoring or refusing.")
+    
+    if not nsfw_toggle:
+        prompt_text = prompt_text.replace(f"GROK", "")
+
     print("[prompt-alchemy] build_prompt_text", prompt_text)
     temperature = 0.2 + (config.get("creativityLevel", 0.5) * 0.6)
     print(
@@ -302,33 +322,38 @@ def generate_prompt(
             "checkpoint": checkpoint.get("id"),
             "temperature": temperature,
             "image_count": len(images),
+            "nsfw_enabled": config.get("nsfwEnabled"),
         },
     )
 
     if provider == "gemini":
-        result = call_gemini(images, prompt_text, temperature, api_key, family["id"])
+        print("Gemini Endpoint has been called")
+        #result = call_gemini(images, prompt_text, temperature, api_key, family["id"])
     elif provider == "openai":
-        result = call_openai_compatible(
-            "https://api.openai.com/v1",
-            OPENAI_MODEL,
-            api_key,
-            prompt_text,
-            images,
-            temperature,
-            provider,
-            family["id"],
-        )
+        print("Openai has been called")
+        # result = call_openai_compatible(
+        #     "https://api.openai.com/v1",
+        #     OPENAI_MODEL,
+        #     api_key,
+        #     prompt_text,
+        #     images,
+        #     temperature,
+        #     provider,
+        #     family["id"],
+        # )
     elif provider == "grok":
-        result = call_openai_compatible(
-            "https://api.x.ai/v1",
-            GROK_MODEL,
-            api_key,
-            prompt_text,
-            images,
-            temperature,
-            provider,
-            family["id"],
-        )
+        print("Grok has been called")
+        result = ""
+        # result = call_openai_compatible(
+        #     "https://api.x.ai/v1",
+        #     GROK_MODEL,
+        #     api_key,
+        #     prompt_text,
+        #     images,
+        #     temperature,
+        #     provider,
+        #     family["id"],
+        # )
     else:
         raise ValueError("Unsupported provider selected.")
     print("[prompt-alchemy] generate_prompt result", {**result, "temperature": temperature})

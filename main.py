@@ -132,6 +132,7 @@ async def generate_prompt_handler(
     auxiliary_upscaler: Optional[str] = Form(None),
     auxiliary_face_fixer: Optional[str] = Form(None),
     auxiliary_control_model: Optional[str] = Form(None),
+    nsfw_enabled: bool = Form(False),
     images: List[UploadFile] = File([]),
 ) -> HTMLResponse:
     if not images:
@@ -175,6 +176,7 @@ async def generate_prompt_handler(
         "focusAspects": focus_aspects,
         "creativityLevel": creativity_level,
         "additionalContext": additional_context,
+        "nsfwEnabled": nsfw_enabled,
         "auxiliary": {
             "upscaler": auxiliary_upscaler or None,
             "faceFixer": auxiliary_face_fixer or None,
@@ -194,6 +196,7 @@ async def generate_prompt_handler(
             "auxiliary_upscaler": auxiliary_upscaler,
             "auxiliary_face_fixer": auxiliary_face_fixer,
             "auxiliary_control_model": auxiliary_control_model,
+            "nsfw_enabled": nsfw_enabled,
             "image_count": len(images),
         },
     )
