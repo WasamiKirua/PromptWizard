@@ -1,6 +1,6 @@
-# PromptAlchemy (FastAPI + HTMX)
+# PromptWizard (FastAPI + HTMX)
 
-PromptAlchemy is a local, browser-based prompt engineering tool that analyzes reference images and generates high-quality prompts for image/video diffusion models. It ports the original React UI into a FastAPI + HTMX + Tailwind workflow while keeping the same smooth, single-page experience.
+PromptWizard is a local, browser-based prompt engineering tool that analyzes reference images and generates high-quality prompts for image/video diffusion models. It ports the original React UI into a FastAPI + HTMX + Tailwind workflow while keeping the same smooth, single-page experience.
 
 ## What it is built for
 - Quickly craft strong prompts from 1–6 reference images.
@@ -29,7 +29,7 @@ The interface is split into three columns:
 - Upload or drag and drop up to 6 images.
 - These images are sent to the selected provider for analysis.
 
-2) Alchemy Lab (center)
+2) Wizard Lab (center)
 - Target Architecture: choose the model family to tailor prompt structure.
 - Specific Checkpoint: select the exact checkpoint within the family.
 - Focus Areas: emphasize aspects like Subject, Outfit, Style, Lighting, etc.
