@@ -328,32 +328,32 @@ def generate_prompt(
 
     if provider == "gemini":
         print("Gemini Endpoint has been called")
-        #result = call_gemini(images, prompt_text, temperature, api_key, family["id"])
+        result = call_gemini(images, prompt_text, temperature, api_key, family["id"])
     elif provider == "openai":
         print("Openai has been called")
-        # result = call_openai_compatible(
-        #     "https://api.openai.com/v1",
-        #     OPENAI_MODEL,
-        #     api_key,
-        #     prompt_text,
-        #     images,
-        #     temperature,
-        #     provider,
-        #     family["id"],
-        # )
+        result = call_openai_compatible(
+            "https://api.openai.com/v1",
+            OPENAI_MODEL,
+            api_key,
+            prompt_text,
+            images,
+            temperature,
+            provider,
+            family["id"],
+        )
     elif provider == "grok":
         print("Grok has been called")
         result = ""
-        # result = call_openai_compatible(
-        #     "https://api.x.ai/v1",
-        #     GROK_MODEL,
-        #     api_key,
-        #     prompt_text,
-        #     images,
-        #     temperature,
-        #     provider,
-        #     family["id"],
-        # )
+        result = call_openai_compatible(
+            "https://api.x.ai/v1",
+            GROK_MODEL,
+            api_key,
+            prompt_text,
+            images,
+            temperature,
+            provider,
+            family["id"],
+        )
     else:
         raise ValueError("Unsupported provider selected.")
     print("[prompt-alchemy] generate_prompt result", {**result, "temperature": temperature})
