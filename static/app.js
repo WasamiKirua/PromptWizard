@@ -221,7 +221,7 @@
       card.innerHTML = `
         <img src="${item.url}" alt="Reference" class="w-full h-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-        <button type="button" class="absolute top-2 right-2 p-1.5 bg-red-500/80 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-600 backdrop-blur-md" data-remove-id="${item.id}">
+        <button type="button" class="absolute top-2 right-2 p-1.5 bg-violet-500/80 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-violet-600 backdrop-blur-md" data-remove-id="${item.id}">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
           </svg>
